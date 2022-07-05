@@ -1,0 +1,6 @@
+tags
+build
+*.swp
+
+# Project exclude paths
+/out/
