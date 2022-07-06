@@ -2,10 +2,9 @@
  * @author Maxx Boehme
  */
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 
@@ -24,6 +23,7 @@ public class GraphTraversalFrame extends JFrame {
                     GraphTraversalFrame frame = new GraphTraversalFrame();
                     frame.setVisible(true);
                     frame.start();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -38,7 +38,10 @@ public class GraphTraversalFrame extends JFrame {
         setResizable(false);
         setTitle("Graph Traversal Algorithms");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 450, 500);
+        ImageIcon logo = new ImageIcon("D:\\GraphTraversalAlgorithms\\GraphMiniProject\\images\\Logo_Hust.png");
+        this.setIconImage(logo.getImage());
+//        this.getContentPane().setBackground(Color.RED);
         contentPane = new GraphTraversalPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));

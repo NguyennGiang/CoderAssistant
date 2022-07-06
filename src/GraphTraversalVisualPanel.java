@@ -85,7 +85,7 @@ public class GraphTraversalVisualPanel extends JPanel implements MouseMotionList
         if(this.graph != null && this.graph.size() > 0){
 //            System.out.println(this.graph.size());
             int dimensions = (int)Math.sqrt(this.graph.size());
-            System.out.println(this.getWidth());
+//            System.out.println(this.getWidth());
             int widthSize = this.getWidth()/ dimensions;
             int numOfVertices = this.getWidth()/widthSize;
 //            System.out.println(dimensions + " " + widthSize + " " + numOfVertices);
@@ -136,6 +136,7 @@ public class GraphTraversalVisualPanel extends JPanel implements MouseMotionList
 
     @Override
     public void mouseClicked(MouseEvent e) {
+//        System.out.println(e.getX() + " " + e.getY());
         if(SwingUtilities.isLeftMouseButton(e)){
             int dem = this.getWidth()/this.graph.width();
             int x = e.getX()/dem;

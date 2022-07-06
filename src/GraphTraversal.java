@@ -2,6 +2,7 @@
  * @author Maxx Boehme
  */
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
@@ -51,6 +52,9 @@ public class GraphTraversal implements Runnable{
         if(!this.stop && foundPath){
             this.vp.setPath(this.getPath());
         }
+        else if (!foundPath){
+//            JOptionPane.showMessageDialog(this, "No ways", "ERROR");
+        }
         this.isStopped = true;
     }
 
@@ -97,7 +101,7 @@ public class GraphTraversal implements Runnable{
                     double newCost = v.getCost() + e.getCost();
                     Graph.Vertex to = e.getTo();
                     if(to.getType() != Graph.Vertex.VertexType.Block && newCost < to.getCost()){
-                        System.out.println(newCost);
+//                        System.out.println(newCost);
                         to.setCost(newCost);
                         to.setParent(v);
                         fringe.add(to);
@@ -167,7 +171,7 @@ public class GraphTraversal implements Runnable{
         while(!fringe.isEmpty() && !this.stop){
             Graph.Vertex v = fringe.poll();
             v.setInFringe(false);
-            System.out.println("v = " + v.getLocation());
+//            System.out.println("v = " + v.getLocation());
             if (v.equals(g)){
                 return true;
             }
@@ -179,7 +183,7 @@ public class GraphTraversal implements Runnable{
                     }
                     Graph.Vertex to = e.getTo();
                     if (to.getType() != Graph.Vertex.VertexType.Block && !to.isVisited()){
-                        System.out.println("to = " + to.getLocation());
+//                        System.out.println("to = " + to.getLocation());
                         to.setParent(v);
                         to.setVisited(true);
                         fringe.add(to);

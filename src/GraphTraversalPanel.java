@@ -33,6 +33,7 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
 
     private Heuristic heuristics;
 
+    private  JButton aboutButton;
     private JButton startButton;
     private JButton clearButton;
     private JComboBox<GraphTraversal.TraversalType> comboBox;
@@ -53,7 +54,7 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         this.setPreferredSize(getSize());
         this.vp = new GraphTraversalVisualPanel(this.graph);
         this.vp.setSize(561, 561);
-        this.vp.setLocation(10, 11);
+        this.vp.setLocation(10, 10);
         this.vp.setVisible(true);
         this.add(this.vp);
 
@@ -66,6 +67,10 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         startButton.setBounds(602, 216, 89, 23);
         add(startButton);
 
+        this.aboutButton = new JButton("About");
+        aboutButton.setBounds(645, 450, 89, 23);
+        add(aboutButton);
+
         this.clearButton = new JButton("Clear Screen");
         clearButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
@@ -76,7 +81,7 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
                 vp.setPath(null);
             }
         });
-        clearButton.setBounds(642, 250, 125, 23);
+        clearButton.setBounds(635, 250, 125, 23);
         add(clearButton);
 
         this.gt = null;
@@ -105,11 +110,6 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         clearTraversal.setBounds(701, 216, 89, 23);
         add(clearTraversal);
 
-//        this.heuristicChooser = new JComboBox<HeuristicTypes>();
-//        heuristicChooser.setModel(new DefaultComboBoxModel<HeuristicTypes>(HeuristicTypes.values()));
-//        heuristicChooser.setBounds(602, 150, 89, 20);
-//        add(heuristicChooser);
-
         this.graphSizeBox = new JComboBox<Integer>();
         graphSizeBox.setModel(new DefaultComboBoxModel<Integer>(getSizes()));
         graphSizeBox.setSelectedIndex(8);
@@ -124,9 +124,9 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         lblWaitMilliseconds.setBounds(602, 71, 165, 14);
         add(lblWaitMilliseconds);
 
-        JLabel lbAHHeuristic = new JLabel("A* Heuristic: Distance");
-        lbAHHeuristic.setBounds(602, 150, 165, 14);
-        add(lbAHHeuristic);
+//        JLabel lbAHHeuristic = new JLabel("A* Heuristic: Distance");
+//        lbAHHeuristic.setBounds(602, 150, 165, 14);
+//        add(lbAHHeuristic);
 
         JLabel lblGraphSizeWidth = new JLabel("Graph Size");
         lblGraphSizeWidth.setBounds(602, 362, 89, 14);
@@ -171,6 +171,8 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
                 t.start();
             }
         });
+
+
     }
 
     @Override

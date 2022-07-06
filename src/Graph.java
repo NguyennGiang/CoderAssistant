@@ -122,6 +122,8 @@ public class Graph {
         }
     }
 
+
+    /*
     public static int dijkstra(Graph graph, Vertex s, Vertex g) {
         for(Vertex v : graph.vertices.values()){
             v.setVisited(false);
@@ -143,13 +145,13 @@ public class Graph {
         };
         PriorityQueue<Vertex> fringe = new PriorityQueue<Vertex>(20, c);
         fringe.add(s);
-        int numremoved = 0;
+        int numRemoved = 0;
         while(!fringe.isEmpty()){
             Vertex v = fringe.remove();
             v.setInFringe(false);
-            numremoved++;
+            numRemoved++;
             if(v.equals(g)){
-                return numremoved;
+                return numRemoved;
             }else if(!v.isVisited()){
                 v.setVisited(true);
                 for(Edge e: v.getEdges()){
@@ -165,10 +167,10 @@ public class Graph {
                 }
             }
         }
-        return numremoved;
+        return numRemoved;
     }
 
-    public static int astar(Graph graph, Vertex start, Vertex goal, Heuristic h) {
+    public static int aStar(Graph graph, Vertex start, Vertex goal, Heuristic h) {
         for(Vertex v : graph.vertices.values()){
             v.visited = false;
             v.cost = Integer.MAX_VALUE;
@@ -214,6 +216,7 @@ public class Graph {
         }
         return result;
     }
+    */
 
     public static class Vertex{
         private Point location;
