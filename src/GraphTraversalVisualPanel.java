@@ -1,6 +1,3 @@
-/**
- * @author Maxx Boehme
- */
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -83,12 +80,12 @@ public class GraphTraversalVisualPanel extends JPanel implements MouseMotionList
 
     public void paintComponent(Graphics g){
         if(this.graph != null && this.graph.size() > 0){
-//            System.out.println(this.graph.size());
-            int dimensions = (int)Math.sqrt(this.graph.size());
-//            System.out.println(this.getWidth());
-            int widthSize = this.getWidth()/ dimensions;
+
+            int dimensions = (int)Math.sqrt(this.graph.size()); // default = 20
+            int widthSize = this.getWidth()/ dimensions;  // 561 / 20;
+//            System.out.println(getWidth());
             int numOfVertices = this.getWidth()/widthSize;
-//            System.out.println(dimensions + " " + widthSize + " " + numOfVertices);
+//            System.out.println("dimensions: " + dimensions + " widthSize: " + widthSize + " numOfVertices: " + numOfVertices);
             for(int i = 0; numOfVertices > i; i++){
                 for(int j = 0; j < numOfVertices; j++){
                     Graph.Vertex v = this.graph.get(i, j);

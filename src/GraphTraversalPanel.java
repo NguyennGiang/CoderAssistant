@@ -1,6 +1,3 @@
-/**
- * @author Maxx Boehme
- */
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -50,10 +47,10 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         this.graph = new Graph();
         this.graph.resetToSize(20);
         setLayout(null);
-        this.setSize(800, 600);
+        this.setSize(1200, 900);
         this.setPreferredSize(getSize());
         this.vp = new GraphTraversalVisualPanel(this.graph);
-        this.vp.setSize(561, 561);
+        this.vp.setSize(1001, 1001);
         this.vp.setLocation(10, 10);
         this.vp.setVisible(true);
         this.add(this.vp);
@@ -64,7 +61,7 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         };
 
         this.startButton = new JButton("Start");
-        startButton.setBounds(602, 216, 89, 23);
+        startButton.setBounds(1200, 216, 89, 23);
         add(startButton);
 
         this.aboutButton = new JButton("About");
@@ -181,11 +178,7 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
             long start = System.currentTimeMillis();
 
             this.vp.repaint();
-            /*
-             * Calculate the delta time between since the start of the frame
-             * and sleep for the excess time to cap the frame rate. While not
-             * incredibly accurate, it is sufficient for our purposes.
-             */
+
             long delta = (System.currentTimeMillis() - start);
             if(delta < FRAME_TIME) {
                 try {
@@ -212,9 +205,6 @@ public class GraphTraversalPanel extends JPanel implements Runnable{
         return r;
     }
 
-    /**
-     * Used to deceiver which Heuristic to use for the A* Algorithm
-     */
     private static enum HeuristicTypes{
         Distance;
     }

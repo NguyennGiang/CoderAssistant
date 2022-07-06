@@ -1,6 +1,3 @@
-/**
- * @author Maxx Boehme
- */
 
 import java.awt.*;
 
@@ -41,12 +38,13 @@ public class GraphTraversalFrame extends JFrame {
         setBounds(100, 100, 450, 500);
         ImageIcon logo = new ImageIcon("D:\\GraphTraversalAlgorithms\\GraphMiniProject\\images\\Logo_Hust.png");
         this.setIconImage(logo.getImage());
-//        this.getContentPane().setBackground(Color.RED);
+
         contentPane = new GraphTraversalPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
         this.pack();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
     }
 
