@@ -172,6 +172,10 @@ public class GraphTraversalPanel extends JPanel implements Runnable, MouseMotion
         clearTraversal.setFont(font2);
         add(clearTraversal);
 
+        // Stop button
+
+
+
         // About Button
         this.aboutButton = new JButton("About");
         aboutButton.setFont(font2);
@@ -181,7 +185,7 @@ public class GraphTraversalPanel extends JPanel implements Runnable, MouseMotion
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JLabel label = new JLabel("Giang Nguyen");
+                JLabel label = new JLabel("<html>Reference:<br>+ Github:https://github.com/maxxboehme/GraphTraversalAlgorithms <br>+ StackOverflow <br>+ Google</html>");
                 label.setFont(new Font("Arial", Font.ITALIC, 18));
                 JOptionPane.showMessageDialog(null, label, "Author", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -190,10 +194,11 @@ public class GraphTraversalPanel extends JPanel implements Runnable, MouseMotion
         
         // qr label
         this.qrLabel = new JLabel("");
-        ImageIcon qrIcon = new ImageIcon("D:/GraphTraversalAlgorithms/GraphMiniProject/images/githublogo.png");
+        ImageIcon qrIcon = new ImageIcon("D:/GraphTraversalAlgorithms/GraphMiniProject/images/qr_code.png");
         System.out.println(qrIcon.getIconWidth() + " " + qrIcon.getIconHeight());
+
         qrLabel.setIcon(qrIcon);
-        qrLabel.setBounds(880, 495, 220, 290);
+        qrLabel.setBounds(874, 495, 231, 290);
         add(qrLabel);
 
     }

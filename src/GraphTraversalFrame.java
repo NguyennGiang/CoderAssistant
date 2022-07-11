@@ -10,9 +10,6 @@ public class GraphTraversalFrame extends JFrame {
     private static final long serialVersionUID = 536632083968634236L;
     private GraphTraversalPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -28,9 +25,6 @@ public class GraphTraversalFrame extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public GraphTraversalFrame() {
         setResizable(false);
         setTitle("Graph Traversal Algorithms");
@@ -48,9 +42,6 @@ public class GraphTraversalFrame extends JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    /**
-     * Creates the thread for the GraphTraversalPanel
-     */
     public void start(){
         Thread t = new Thread(this.contentPane);
         t.start();
