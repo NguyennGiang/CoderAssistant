@@ -35,7 +35,7 @@ public class GraphTraversalFrame extends JFrame {
         setResizable(false);
         setTitle("Graph Traversal Algorithms");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 500);
+        setBounds(10, 10, 450, 500);
         ImageIcon logo = new ImageIcon("D:\\GraphTraversalAlgorithms\\GraphMiniProject\\images\\Logo_Hust.png");
         this.setIconImage(logo.getImage());
 
@@ -44,7 +44,7 @@ public class GraphTraversalFrame extends JFrame {
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
         this.pack();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
     }
 

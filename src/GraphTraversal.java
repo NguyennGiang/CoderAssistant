@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.util.*;
 
 public class GraphTraversal implements Runnable{
@@ -13,7 +12,6 @@ public class GraphTraversal implements Runnable{
 
     private int waitTime = 0;
     private Heuristic h;
-
     private GraphTraversalVisualPanel vp;
 
     GraphTraversal(Graph g, TraversalType t, Graph.Vertex s, Graph.Vertex goal, int wt, Heuristic h, GraphTraversalVisualPanel vp){
@@ -25,7 +23,6 @@ public class GraphTraversal implements Runnable{
         this.isStopped = true;
         this.waitTime = wt;
         this.h = h;
-
         this.vp = vp;
     }
 
@@ -48,10 +45,11 @@ public class GraphTraversal implements Runnable{
         if(!this.stop && foundPath){
             this.vp.setPath(this.getPath());
         }
-        else if (!foundPath){
-//            JOptionPane.showMessageDialog(this, "No ways", "ERROR");
+        else if (!foundPath && !this.stop){
+            JOptionPane.showMessageDialog(null, "No ways", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         this.isStopped = true;
+
     }
 
     public boolean isStopped(){
@@ -62,7 +60,8 @@ public class GraphTraversal implements Runnable{
         this.stop = true;
     }
 
-    private boolean dijkstra(Graph.Vertex s, Graph.Vertex g) {
+    private boolean dijkstra(Graph.Vertex s, Graph.Vertex g)
+    {
         for(Graph.Vertex v : this.graph.getGraph()){
             v.setVisited(false);
             v.setCost(Integer.MAX_VALUE);
@@ -104,6 +103,7 @@ public class GraphTraversal implements Runnable{
                         to.setInFringe(true);
 
                     }
+
                     if(!this.stop){
                         try {
                             Thread.sleep(this.waitTime);
@@ -126,7 +126,7 @@ public class GraphTraversal implements Runnable{
         while(!fringe.isEmpty() && !this.stop){
             Graph.Vertex v = fringe.pop();
             v.setInFringe(false);
-            System.out.println("v = " + v.getLocation());
+//            System.out.println("v = " + v.getLocation());
             if (v.equals(g)){
                 return true;
             }
@@ -138,7 +138,7 @@ public class GraphTraversal implements Runnable{
                     }
                     Graph.Vertex to = e.getTo();
                     if (to.getType() != Graph.Vertex.VertexType.Block && !to.isVisited()){
-                        System.out.println("to = " + to.getLocation());
+//                        System.out.println("to = " + to.getLocation());
                         to.setParent(v);
                         to.setVisited(true);
                         fringe.add(to);
@@ -185,6 +185,7 @@ public class GraphTraversal implements Runnable{
                         fringe.add(to);
                         to.setInFringe(true);
                     }
+
                     if (!this.stop){
                         try {
                             Thread.sleep(this.waitTime);

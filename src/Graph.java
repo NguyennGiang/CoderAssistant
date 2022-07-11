@@ -1,13 +1,10 @@
-
-import java.awt.Color;
-import java.awt.Point;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
-import java.util.PriorityQueue;
 import java.util.TreeMap;
-
-import java.util.concurrent.locks.*;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class Graph {
@@ -118,102 +115,6 @@ public class Graph {
             v.setType(Vertex.VertexType.Empty);
         }
     }
-
-
-    /*
-    public static int dijkstra(Graph graph, Vertex s, Vertex g) {
-        for(Vertex v : graph.vertices.values()){
-            v.setVisited(false);
-            v.setCost(Integer.MAX_VALUE);
-        }
-        s.setCost(0);
-        s.setParent(null);
-        Comparator<Vertex> c = new Comparator<Vertex>(){
-            public int compare(Vertex i, Vertex j){
-                double difference = (i.getCost()-j.getCost());
-                if(difference > 0){
-                    return 1;
-                }
-                if(difference < 0){
-                    return -1;
-                }
-                return 0;
-            }
-        };
-        PriorityQueue<Vertex> fringe = new PriorityQueue<Vertex>(20, c);
-        fringe.add(s);
-        int numRemoved = 0;
-        while(!fringe.isEmpty()){
-            Vertex v = fringe.remove();
-            v.setInFringe(false);
-            numRemoved++;
-            if(v.equals(g)){
-                return numRemoved;
-            }else if(!v.isVisited()){
-                v.setVisited(true);
-                for(Edge e: v.getEdges()){
-                    double newCost = v.getCost() + e.getCost();
-                    Vertex to = e.getTo();
-                    if(to.type != Vertex.VertexType.Block && newCost < to.getCost()){
-                        to.setCost(newCost);
-                        to.setParent(v);
-                        fringe.add(to);
-                        to.setInFringe(true);
-
-                    }
-                }
-            }
-        }
-        return numRemoved;
-    }
-
-    public static int aStar(Graph graph, Vertex start, Vertex goal, Heuristic h) {
-        for(Vertex v : graph.vertices.values()){
-            v.visited = false;
-            v.cost = Integer.MAX_VALUE;
-        }
-        start.cost = 0;
-        start.parent = null;
-        Comparator<Vertex> c = new Comparator<Vertex>(){
-            public int compare(Vertex i, Vertex j){
-                double difference = (i.getEstimate()-j.getEstimate());
-                if(difference > 0){
-                    return 1;
-                }
-                if(difference < 0){
-                    return -1;
-                }
-                return 0;
-            }
-        };
-        PriorityQueue<Vertex> fringe = new PriorityQueue<Vertex>(20, c);
-        fringe.add(start);
-        int result = 0;
-        boolean found = false;
-        while(!fringe.isEmpty() && !found){
-            Vertex v = fringe.remove();
-            v.setInFringe(false);
-            result++;
-            if(v.equals(goal)){
-                found = true;
-            }else if(!v.isVisited()){
-                v.setVisited(true);
-                for(Edge e: v.getEdges()){
-                    double newcost = v.getCost() + e.getCost();
-                    Vertex to = e.getTo();
-                    if(to.type == Vertex.VertexType.Empty && newcost < to.getCost()){
-                        to.setCost(newcost);
-                        to.setEstimate(h.estimate(e.to, goal));
-                        to.setParent(v);
-                        fringe.add(to);
-                        to.setInFringe(true);
-                    }
-                }
-            }
-        }
-        return result;
-    }
-    */
 
     public static class Vertex{
         private Point location;
