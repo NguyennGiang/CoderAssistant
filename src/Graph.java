@@ -105,6 +105,9 @@ public class Graph {
         for(Vertex v: this.vertices.values()){
             v.setInFringe(false);
             v.setVisited(false);
+            v.setVisited(false);
+            v.setParent(null);
+            v.setCost(Integer.MAX_VALUE);
         }
     }
 

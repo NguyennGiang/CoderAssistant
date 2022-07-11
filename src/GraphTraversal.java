@@ -1,4 +1,7 @@
+import org.w3c.dom.Text;
+
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 public class GraphTraversal implements Runnable{
@@ -46,7 +49,9 @@ public class GraphTraversal implements Runnable{
             this.vp.setPath(this.getPath());
         }
         else if (!foundPath && !this.stop){
-            JOptionPane.showMessageDialog(null, "No ways", "ERROR", JOptionPane.WARNING_MESSAGE);
+            JLabel label = new JLabel("Hông bé ơi");
+            label.setFont(new Font("Arial", Font.ITALIC, 18));
+            JOptionPane.showMessageDialog(null, label, "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         this.isStopped = true;
 
@@ -62,10 +67,10 @@ public class GraphTraversal implements Runnable{
 
     private boolean dijkstra(Graph.Vertex s, Graph.Vertex g)
     {
-        for(Graph.Vertex v : this.graph.getGraph()){
-            v.setVisited(false);
-            v.setCost(Integer.MAX_VALUE);
-        }
+//        for(Graph.Vertex v : this.graph.getGraph()){
+//            v.setVisited(false);
+//            v.setCost(Integer.MAX_VALUE);
+//        }
         s.setCost(0);
         s.setParent(null);
         Comparator<Graph.Vertex> c = new Comparator<Graph.Vertex>(){
@@ -118,27 +123,28 @@ public class GraphTraversal implements Runnable{
     }
 
     private boolean DFS(Graph.Vertex s, Graph.Vertex g){
-        for (Graph.Vertex v : this.graph.getGraph()){
-            v.setVisited(false);
-        }
+//        for (Graph.Vertex v : this.graph.getGraph()){
+//            v.setVisited(false);
+//            v.setParent(null);
+//        }
         Stack<Graph.Vertex> fringe = new Stack<Graph.Vertex>();
         fringe.add(s);
+        s.setVisited(true);
         while(!fringe.isEmpty() && !this.stop){
             Graph.Vertex v = fringe.pop();
             v.setInFringe(false);
-//            System.out.println("v = " + v.getLocation());
+            System.out.println("v = " + v.getLocation());
             if (v.equals(g)){
                 return true;
             }
             else {
-                v.setVisited(true);
                 for (Graph.Edge e : v.getEdges()){
                     if (this.stop){
                         break;
                     }
                     Graph.Vertex to = e.getTo();
                     if (to.getType() != Graph.Vertex.VertexType.Block && !to.isVisited()){
-//                        System.out.println("to = " + to.getLocation());
+                        System.out.println("to = " + to.getLocation());
                         to.setParent(v);
                         to.setVisited(true);
                         fringe.add(to);
@@ -159,11 +165,12 @@ public class GraphTraversal implements Runnable{
     }
 
     private boolean BFS(Graph.Vertex s, Graph.Vertex g){
-        for (Graph.Vertex v : this.graph.getGraph()){
-            v.setVisited(false);
-        }
+//        for (Graph.Vertex v : this.graph.getGraph()){
+//            v.setVisited(false);
+//        }
         Queue<Graph.Vertex> fringe = new LinkedList<>();
         fringe.add(s);
+        s.setVisited(true);
         while(!fringe.isEmpty() && !this.stop){
             Graph.Vertex v = fringe.poll();
             v.setInFringe(false);
@@ -172,7 +179,6 @@ public class GraphTraversal implements Runnable{
                 return true;
             }
             else {
-                v.setVisited(true);
                 for (Graph.Edge e : v.getEdges()){
                     if (this.stop){
                         break;
@@ -201,10 +207,10 @@ public class GraphTraversal implements Runnable{
     }
 
     private boolean aStar(Graph.Vertex start, Graph.Vertex goal, Heuristic h) {
-        for(Graph.Vertex v : this.graph.getGraph()){
-            v.setVisited(false);
-            v.setCost(Integer.MAX_VALUE);
-        }
+//        for(Graph.Vertex v : this.graph.getGraph()){
+//            v.setVisited(false);
+//            v.setCost(Integer.MAX_VALUE);
+//        }
         start.setCost(0);
         start.setParent(null);
         Comparator<Graph.Vertex> c = new Comparator<Graph.Vertex>(){

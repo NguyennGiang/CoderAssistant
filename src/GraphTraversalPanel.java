@@ -7,6 +7,7 @@ import java.util.LinkedList;
 public class GraphTraversalPanel extends JPanel implements Runnable, MouseMotionListener, MouseListener {
 
     private static final long serialVersionUID = 6382904795938277521L;
+    private final JLabel qrLabel;
 
     private GraphTraversalVisualPanel vp;
     private Graph graph;
@@ -48,11 +49,14 @@ public class GraphTraversalPanel extends JPanel implements Runnable, MouseMotion
         Font font1 = new Font("Serif", Font.ITALIC, 30);
         Font font2 = new Font("Serif", Font.ITALIC, 20);
         this.addMouseListener(this);
+//        this.setForeground(Color.WHITE);
+//        this.setBackground(Color.BLACK);
 
         // Title
         JLabel lblGraphTraversalAlgorithm1 = new JLabel("Graph");
         lblGraphTraversalAlgorithm1.setFont(font1);
         lblGraphTraversalAlgorithm1.setBounds(950, 30, 200, 50);
+        lblGraphTraversalAlgorithm1.setBackground(Color.WHITE);
         add(lblGraphTraversalAlgorithm1);
         JLabel lblGraphTraversalAlgorithm2 = new JLabel("Traversal Algorithms");
         lblGraphTraversalAlgorithm2.setFont(font1);
@@ -171,15 +175,26 @@ public class GraphTraversalPanel extends JPanel implements Runnable, MouseMotion
         // About Button
         this.aboutButton = new JButton("About");
         aboutButton.setFont(font2);
-        aboutButton.setBounds(815, 500, 150, 35);
+        aboutButton.setBounds(915, 450, 150, 35);
         add(aboutButton);
 
         aboutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Giang Nguyen", "Author", JOptionPane.OK_OPTION);
+                JLabel label = new JLabel("Giang Nguyen");
+                label.setFont(new Font("Arial", Font.ITALIC, 18));
+                JOptionPane.showMessageDialog(null, label, "Author", JOptionPane.INFORMATION_MESSAGE);
             }
         });
+        
+        
+        // qr label
+        this.qrLabel = new JLabel("");
+        ImageIcon qrIcon = new ImageIcon("D:/GraphTraversalAlgorithms/GraphMiniProject/images/githublogo.png");
+        System.out.println(qrIcon.getIconWidth() + " " + qrIcon.getIconHeight());
+        qrLabel.setIcon(qrIcon);
+        qrLabel.setBounds(880, 495, 220, 290);
+        add(qrLabel);
 
     }
 
